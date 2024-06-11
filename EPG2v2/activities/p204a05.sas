@@ -14,7 +14,7 @@
 *     Are the Registration and Height values formatted?   *;
 ***********************************************************;
 
-proc format /*add a LIBRARY= option*/ ;
+proc format library=pg2.formats;
     value $reg 'C' = 'Complete'
                'I' = 'Incomplete'                             
              other = 'Miscoded';
@@ -24,7 +24,7 @@ proc format /*add a LIBRARY= option*/ ;
 run;
 
 *add an OPTIONS statement;
-
+options fmtsearch=(pg2.formats);
 proc print data=pg2.class_birthdate noobs;
     where Age=12;
     var Name Registration Height;

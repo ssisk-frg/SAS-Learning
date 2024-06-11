@@ -37,5 +37,6 @@ run;
 proc format cntlin=catdata;
 run;
 
-*proc format fmtlib library=work;
-*run;
+proc format fmtlib library=work;
+	select $sbfmt catfmt;
+run;

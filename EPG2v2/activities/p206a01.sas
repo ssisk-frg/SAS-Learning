@@ -13,11 +13,18 @@
 ***********************************************************;
 
 data YearlySavings;
-   Amount=200;
-   do Month=1 to 12;
-      Savings+Amount;
-	  *add a SUM Statement;
-	  output;
-   end;
-   format Savings 12.2;
+	do Year=1 to 6;
+		Invest+10000;
+		do Quarter=1 to 4;
+			Invest+(Invest*(.075/4));
+		end;
+		output;
+	end;
+	drop Quarter;
 run;
+
+title1 'Retirement Account Balance per Year';
+proc print data=retirement noobs;
+    format Invest dollar12.2;
+run;
+title;

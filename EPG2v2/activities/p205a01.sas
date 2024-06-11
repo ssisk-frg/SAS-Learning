@@ -15,7 +15,8 @@
 ***********************************************************;
 
 data class_current;
-    set sashelp.class pg2.class_new2;
+	length Name $ 9;
+    set sashelp.class pg2.class_new2(rename=(Student=Name));
 run;
 
 proc contents data=sashelp.class;

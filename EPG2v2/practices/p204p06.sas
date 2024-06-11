@@ -30,6 +30,12 @@
 proc format cntlin=pg2.np_types_regions;
 run;
 
+proc format cntlin=typfmtout;
+run;
+
+data typfmt_update;
+	set 
+
 title1 'Park Frequencies by Type';
 proc freq data=pg2.np_summary;
     table Type / nocum;

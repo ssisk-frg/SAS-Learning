@@ -18,8 +18,8 @@ run;
 
 data class2;
 	*Complete the MERGE and BY statements;
-	merge ;
-	by ;
+	merge teachers_sort test2_sort;
+	by Name;
 run;
 
 

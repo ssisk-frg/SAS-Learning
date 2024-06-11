@@ -16,6 +16,15 @@ proc sort data=pg2.np_codelookup out=work.codesort;
 	by ParkCode;
 run;
 
-proc sort data=pg2.np_2016traffic out=work.traf2016Sort;
-	by Code month;
+proc sort data=pg2.np_2016traffic(rename=(Code=ParkCode)) out=work.traf2016Sort;
+	by ParkCode month;
 run;
+
+data work.trafficstats(drop=NameCode);
+	merge
+		work.codesort
+		work.traf2016Sort;
+	by ParkCode;
+run;
+	
+

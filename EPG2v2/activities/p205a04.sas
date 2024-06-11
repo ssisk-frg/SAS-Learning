@@ -23,10 +23,10 @@ proc sort data=storm_damage;
 	by Season Name;
 run;
 
-data damage_detail;
+data damage_detail storm_other(drop=Cost);
 	merge storm_final_sort(in=inFinal) storm_damage(in=inDamage);
 	keep Season Name BasinName MaxWindMPH MinPressure Cost;
 	by Season Name;
 	if inDamage=1 and inFinal=1 then output damage_detail;
-	*Add ELSE statement;
+	else output storm_other;
 run;

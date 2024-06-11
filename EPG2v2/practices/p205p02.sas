@@ -12,9 +12,13 @@
 ***********************************************************;
 
 data work.np_combine;
-    set PG2.NP_2015 PG2.NP_2016;
+    set PG2.NP_2014(rename=(Type=ParkType Park=ParkCode)) PG2.NP_2015 PG2.NP_2016;
     drop Camping:;
-    where Month in (6, 7, 8);
+    where Month in (6, 7, 8) and ParkType="National Park";
     CampTotal=sum(of Camping:);
     format CampTotal comma12.0;
+run;
+
+proc sort data=np_combine;
+	by ParkType ParkCode Year Month;
 run;
